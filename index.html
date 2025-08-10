@@ -518,10 +518,13 @@
     </div>
 
     <div class="container">
-        <audio id="backgroundMusic" loop autoplay>
-            <source src="soundoflushing.mp3" type="audio/mpeg">
+        <audio id="backgroundMusic" loop preload="none" crossorigin="anonymous">
+            <source id="bgSource" src="" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
+        
+        <!-- optional: kill the favicon 404 -->
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🚽</text></svg>">
         
         <div class="audio-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 15px; border-radius: 15px; border: 2px solid #FFD700; z-index: 1000;">
             <button onclick="toggleMusic()" style="background: #FFD700; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; margin-right: 10px;">
@@ -716,6 +719,57 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
         let maxJokeLevel = 100;
         let floatingEmojis = ['💩', '🚽', '🧻', '🚿', '🚰', '💦', '🧠', '🤖'];
         let isConnected = false;
+        
+        // --- Audio bootstrap ---
+        const MP3_URL = 'https://raw.githubusercontent.com/anttiluode/SewerSystemAI/main/soundofflushing.mp3';
+        // If using GitHub Pages instead, use:
+        // const MP3_URL = 'https://anttiluode.github.io/SewerSystemAI/soundofflushing.mp3';
+        
+        const bgMusic = document.getElementById('backgroundMusic');
+        const bgSource = document.getElementById('bgSource');
+        bgSource.src = MP3_URL; // set source
+        bgMusic.load(); // commit the new src
+        bgMusic.volume = 0.3; // default 30%
+        
+        // Start after first click (autoplay-safe)
+        let audioPrimed = false;
+        function primeAndPlay() {
+            if (audioPrimed) return;
+            audioPrimed = true;
+            bgMusic.play().catch(() => {/* ignore, user can press Mute/Play */});
+        }
+        
+        // Prime on any user gesture
+        window.addEventListener('pointerdown', primeAndPlay, { once: true });
+        window.addEventListener('keydown', primeAndPlay, { once: true });
+        
+        // Toggle mute/play (works even before audio is primed)
+        let isMuted = false;
+        function toggleMusic() {
+            const musicToggle = document.getElementById('musicToggle');
+            if (isMuted) {
+                bgMusic.play().catch(()=>{});
+                musicToggle.textContent = '🔇 Mute';
+                isMuted = false;
+            } else {
+                bgMusic.pause();
+                musicToggle.textContent = '🔊 Play';
+                isMuted = true;
+            }
+        }
+        
+        // Volume slider callback (your HTML already calls this)
+        function changeVolume(value) {
+            bgMusic.volume = value / 100;
+        }
+        
+        // Use the same MP3 for SFX (avoids 404s)
+        function playFlushSound() {
+            const flush = new Audio(MP3_URL);
+            flush.crossOrigin = 'anonymous';
+            flush.volume = 0.5;
+            flush.play().catch(()=>{});
+        }
         
         // Create toilet brain visualization
         function createToiletBrain() {
@@ -1103,34 +1157,7 @@ Your membership card is already in your bathroom. Go check!`);
             }
         });
         
-        // Audio control functions
-        let isMuted = false;
-        const bgMusic = document.getElementById('backgroundMusic');
-        bgMusic.volume = 0.3; // Start at 30% volume
-        
-        function toggleMusic() {
-            const musicToggle = document.getElementById('musicToggle');
-            if (isMuted) {
-                bgMusic.play();
-                musicToggle.textContent = '🔇 Mute';
-                isMuted = false;
-            } else {
-                bgMusic.pause();
-                musicToggle.textContent = '🔊 Play';
-                isMuted = true;
-            }
-        }
-        
-        function changeVolume(value) {
-            bgMusic.volume = value / 100;
-        }
-        
-        // Play flush sound effect on button clicks
-        function playFlushSound() {
-            const flush = new Audio('soundoflushing.mp3');
-            flush.volume = 0.5;
-            flush.play();
-        }
+        // Audio control functions are now defined above
         
         // Add flush sound to all conspiracy buttons
         document.querySelectorAll('.conspiracy-button').forEach(button => {
@@ -1156,10 +1183,11 @@ Your membership card is already in your bathroom. Go check!`);
                 // Victory flush symphony!
                 for (let i = 0; i < 5; i++) {
                     setTimeout(() => {
-                        const victoryFlush = new Audio('soundoflushing.mp3');
+                        const victoryFlush = new Audio(MP3_URL);
+                        victoryFlush.crossOrigin = 'anonymous';
                         victoryFlush.volume = 0.3;
                         victoryFlush.playbackRate = 1 + (i * 0.2); // Increasing pitch
-                        victoryFlush.play();
+                        victoryFlush.play().catch(()=>{});
                     }, i * 300);
                 }
             }
