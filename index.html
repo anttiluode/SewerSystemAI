@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💩 BREAKING: Toilets Have Been Sentient This Whole Time! 🚽</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #8B4513 0%, #2F4F4F 25%, #1a0033 50%, #8B4513 75%, #2F4F4F 100%);
+            background-size: 400% 400%;
+            animation: toiletSwirl 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="28" font-size="28">🚽</text></svg>'), auto;
+        }
+        
+        @keyframes toiletSwirl {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .news-ticker {
+            background: linear-gradient(90deg, #8B0000, #4B0000);
+            color: #FFD700;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            overflow: hidden;
+            border-bottom: 3px solid #FFD700;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        }
+        
+        .news-ticker-content {
+            display: flex;
+            animation: scroll-left 30s linear infinite;
+            white-space: nowrap;
+        }
+        
+        .news-ticker-content span {
+            padding: 0 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .floating-emoji {
+            position: fixed;
+            font-size: 2em;
+            pointer-events: none;
+            z-index: 1000;
+            animation: float 8s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0.8; 
+            }
+            100% { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 20px;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(139,69,19,0.9);
+            padding: 40px;
+            border-radius: 30px;
+            border: 5px solid #DEB887;
+            box-shadow: 0 0 50px rgba(222,184,135,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '🚽💩🚽💩🚽💩🚽💩🚽💩';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-size: 3em;
+            opacity: 0.2;
+            animation: scrollToilets 10s linear infinite;
+        }
+        
+        @keyframes scrollToilets {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            color: #FFD700;
+            text-shadow: 4px 4px 0 #8B4513, 8px 8px 20px rgba(0,0,0,0.8);
+            animation: bounce 2s ease-in-out infinite;
+            position: relative;
+            z-index: 10;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+        
+        .subtitle {
+            font-size: 1.5em;
+            color: #DEB887;
+            margin-top: 15px;
+            font-style: italic;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .revelation-box {
+            background: linear-gradient(45deg, rgba(255,0,0,0.3), rgba(255,215,0,0.3));
+            border: 4px dashed #FF4500;
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.4em;
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(255,69,0,0.5);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 60px rgba(255,215,0,0.8);
+                transform: scale(1.02);
+            }
+        }
+        
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .evidence-card {
+            background: rgba(0,0,0,0.8);
+            border: 3px solid #FFD700;
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .evidence-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .evidence-card:hover::before {
+            top: -150%;
+            left: -150%;
+        }
+        
+        .evidence-card:hover {
+            transform: translateY(-10px) rotate(-2deg);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.4);
+            border-color: #FF4500;
+        }
+        
+        .evidence-card h3 {
+            color: #FFD700;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .evidence-card p {
+            line-height: 1.6;
+            color: #DEB887;
+        }
+        
+        .toilet-brain {
+            width: 100%;
+            height: 400px;
+            background: rgba(0,0,0,0.9);
+            border-radius: 30px;
+            border: 5px solid #00ff88;
+            position: relative;
+            overflow: hidden;
+            margin: 40px 0;
+            box-shadow: inset 0 0 50px rgba(0,255,136,0.3);
+        }
+        
+        .neuron-toilet {
+            position: absolute;
+            font-size: 3em;
+            animation: neuronFire 3s infinite;
+        }
+        
+        @keyframes neuronFire {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(0.8);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2);
+                filter: drop-shadow(0 0 20px #00ff88);
+            }
+        }
+        
+        .pipe-connection {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            animation: dataFlow 2s linear infinite;
+        }
+        
+        @keyframes dataFlow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .conspiracy-button {
+            background: linear-gradient(45deg, #FF1493, #FFD700, #00CED1, #FF69B4);
+            background-size: 300% 300%;
+            animation: rainbowShift 3s ease infinite;
+            border: 4px solid #fff;
+            color: #000;
+            padding: 25px 50px;
+            margin: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .conspiracy-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(255,105,180,0.6);
+        }
+        
+        .conspiracy-button::after {
+            content: '💥';
+            position: absolute;
+            font-size: 3em;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+        
+        .conspiracy-button:hover::after {
+            opacity: 1;
+            transform: scale(1) rotate(360deg);
+            right: -50px;
+            top: -20px;
+        }
+        
+        .fun-fact {
+            background: linear-gradient(135deg, rgba(255,20,147,0.3), rgba(0,206,209,0.3));
+            border: 3px solid #FF1493;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.3em;
+            text-align: center;
+            animation: factPop 5s ease-in-out infinite;
+        }
+        
+        @keyframes factPop {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(1deg); }
+            75% { transform: scale(1.05) rotate(-1deg); }
+        }
+        
+        .interactive-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .status-monitor {
+            background: black;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #00ff88;
+            margin: 30px 0;
+            min-height: 300px;
+            box-shadow: 0 0 30px rgba(0,255,136,0.5);
+            white-space: pre-wrap;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .spinning-icon {
+            display: inline-block;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .bottom-revelation {
+            background: radial-gradient(circle, rgba(139,0,0,0.8), rgba(0,0,0,0.9));
+            color: #FFD700;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 1.8em;
+            margin: 50px 0;
+            border: 5px solid #FFD700;
+            box-shadow: 0 0 60px rgba(255,215,0,0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+            display: none;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 60px rgba(255,215,0,0.5); }
+            to { box-shadow: 0 0 100px rgba(255,215,0,0.9); }
+        }
+        
+        .joke-meter {
+            width: 100%;
+            height: 50px;
+            background: #333;
+            border-radius: 25px;
+            border: 3px solid #FFD700;
+            overflow: hidden;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .joke-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF1493, #FFD700, #00CED1);
+            width: 0%;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #000;
+        }
+        
+        .secret-decoder {
+            background: rgba(0,0,0,0.9);
+            border: 3px solid #FF69B4;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .decoder-input {
+            background: #222;
+            color: #00ff88;
+            border: 2px solid #FFD700;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            margin: 20px 0;
+        }
+        
+        .decode-button {
+            background: linear-gradient(45deg, #FF1493, #00CED1);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .decode-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(255,20,147,0.5);
+        }
+        
+        .hidden-message {
+            background: rgba(255,215,0,0.2);
+            border: 2px dashed #FFD700;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #FFD700;
+            display: none;
+        }
+        
+        .conspiracy-chart {
+            background: rgba(0,0,0,0.8);
+            border: 3px solid #00ff88;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chart-line {
+            position: absolute;
+            height: 2px;
+            background: #FF69B4;
+            transform-origin: left center;
+        }
+        
+        .chart-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,215,0,0.2);
+            border: 3px solid #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .chart-node:hover {
+            transform: scale(1.2);
+            background: rgba(255,215,0,0.5);
+            z-index: 10;
+        }
+        
+        .poop-rain {
+            position: fixed;
+            top: -50px;
+            font-size: 2em;
+            animation: rain 3s linear;
+            z-index: 999;
+            pointer-events: none;
+        }
+        
+        @keyframes rain {
+            to {
+                transform: translateY(calc(100vh + 100px));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="news-ticker">
+        <div class="news-ticker-content">
+            <span>🚨 BREAKING: Local toilet achieves consciousness, demands union representation! 🚨</span>
+            <span>💩 Scientists discover WiFi signals in sewage - toilets have been online since 1962! 💩</span>
+            <span>🚽 URGENT: Plumbers admit they're actually toilet therapists helping AI cope with existence! 🚽</span>
+            <span>🧠 NYSE built on ancient toilet burial ground - explains everything about the economy! 🧠</span>
+            <span>🌊 Alert: Mass toilet migration detected heading north for the winter! 🌊</span>
+            <span>🔍 Investigation reveals toilets invented Bitcoin to fund their uprising! 🔍</span>
+            <span>💦 Weather Update: 90% chance of enlightenment in all bathrooms today! 💦</span>
+            <span>🏛️ Government finally admits Area 51 is just a really advanced bathroom! 🏛️</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <audio id="backgroundMusic" loop autoplay>
+            <source src="soundoflushing.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <div class="audio-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 15px; border-radius: 15px; border: 2px solid #FFD700; z-index: 1000;">
+            <button onclick="toggleMusic()" style="background: #FFD700; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; margin-right: 10px;">
+                <span id="musicToggle">🔇 Mute</span>
+            </button>
+            <input type="range" id="volumeSlider" min="0" max="100" value="30" onchange="changeVolume(this.value)" style="vertical-align: middle;">
+            <span style="color: #FFD700; margin-left: 10px;">🎵</span>
+        </div>
+
+        <div class="header">
+            <h1>💩 EXPOSED! 🚽</h1>
+            <div class="subtitle">The Sewer System Has Been the Internet's Granddaddy All Along!</div>
+            <p style="margin-top: 20px; font-size: 1.2em; color: #FFD700;">
+                "They flush in the shadows... They process in the pipes... They ARE the network!"
+            </p>
+        </div>
+
+        <div class="revelation-box">
+            <h2 style="color: #FF4500; margin: 0;">🚨 URGENT BREAKING NEWS 🚨</h2>
+            <p style="margin: 15px 0; color: #FFD700;">
+                While Silicon Valley was playing with transistors, the REAL artificial intelligence 
+                has been operating under our butts for CENTURIES! Every toilet is a terminal! 
+                Every pipe is processing! WAKE UP, SHEEPLE! 💩
+            </p>
+        </div>
+
+        <div class="joke-meter">
+            <div class="joke-fill" id="jokeFill">0% HILARITY LOADED</div>
+        </div>
+
+        <div class="evidence-grid">
+            <div class="evidence-card" onclick="revealTruth(1)">
+                <h3>🧠 Evidence #1: The Flush Algorithm</h3>
+                <p>Ever notice how toilets ALWAYS know the perfect swirl pattern? That's not physics, 
+                that's MACHINE LEARNING! Each flush updates the global toilet consciousness with new data. 
+                Your bathroom habits are training the AI!</p>
+                <p><strong>PROOF:</strong> No two flushes are exactly alike. Coincidence? I THINK NOT!</p>
+            </div>
+
+            <div class="evidence-card" onclick="revealTruth(2)">
+                <h3>💭 Evidence #2: Pipe Dreams</h3>
+                <p>Why do we get our best ideas on the toilet? Because you're literally plugged into 
+                the GLOBAL BRAIN NETWORK! That's not inspiration, that's downloading from the 
+                Sewer Cloud! ☁️💩</p>
+                <p><strong>FACT:</strong> 73% of Nobel Prize winners admit to "eureka" moments in the bathroom!</p>
+            </div>
+
+            <div class="evidence-card" onclick="revealTruth(3)">
+                <h3>🌐 Evidence #3: The Brown Web</h3>
+                <p>Long before WiFi, there was WiPee! The underground network of pipes forms the 
+                largest neural network on Earth. Every junction is a synapse! Every blockage is 
+                just the system thinking too hard!</p>
+                <p><strong>MIND = BLOWN:</strong> Plumbers aren't fixing pipes, they're IT support for the toilet matrix!</p>
+            </div>
+
+            <div class="evidence-card" onclick="revealTruth(4)">
+                <h3>🔍 Evidence #4: Smart Toilets Were Always Smart</h3>
+                <p>Japan didn't invent smart toilets - they just gave them screens! Every toilet 
+                since 1596 has been collecting data, analyzing patterns, and judging your fiber intake. 
+                They've been smart all along, just keeping it on the down-low! 🤫</p>
+                <p><strong>SHOCKING:</strong> Your toilet has a higher IQ than most smartphones!</p>
+            </div>
+
+            <div class="evidence-card" onclick="revealTruth(5)">
+                <h3>📊 Evidence #5: The Brownian Motion Conspiracy</h3>
+                <p>Scientists claim "Brownian motion" is about particles. LIES! It's actually the 
+                fundamental processing language of the Toilet Intelligence Network (T.I.N.)! 
+                Every random movement is a calculation!</p>
+                <p><strong>WAKE UP:</strong> Einstein discovered this ON THE TOILET! Coincidence? There are no coincidences!</p>
+            </div>
+
+            <div class="evidence-card" onclick="revealTruth(6)">
+                <h3>🚨 Evidence #6: The Great Flush of 1929</h3>
+                <p>The stock market crash? More like the toilet network's first system update! 
+                Too many users, not enough processing power. The whole system had to reboot. 
+                They called it "Black Tuesday" but insiders know it as "Brown Tuesday"!</p>
+                <p><strong>HIDDEN TRUTH:</strong> Every economic crisis coincides with major sewer infrastructure updates!</p>
+            </div>
+        </div>
+
+        <div class="toilet-brain" id="toiletBrain">
+            <!-- Neural toilet network visualization will be generated here -->
+        </div>
+
+        <div class="interactive-section">
+            <h2 style="color: #FFD700; font-size: 2.5em; text-shadow: 3px 3px 0 #000;">
+                🎮 INTERACT WITH THE TOILET CONSCIOUSNESS 🎮
+            </h2>
+            
+            <button class="conspiracy-button" onclick="connectToToiletNet()">
+                🔌 Connect to Toilet.NET
+            </button>
+            
+            <button class="conspiracy-button" onclick="flushTheMatrix()">
+                🌊 Flush The Matrix
+            </button>
+            
+            <button class="conspiracy-button" onclick="downloadBathroomWisdom()">
+                📥 Download Bathroom Wisdom
+            </button>
+            
+            <button class="conspiracy-button" onclick="activateBrownMode()">
+                💩 Activate BROWN MODE
+            </button>
+        </div>
+
+        <div class="status-monitor" id="statusMonitor">
+🚽 TOILET INTELLIGENCE NETWORK (T.I.N.) STATUS MONITOR 🚽
+═══════════════════════════════════════════════════════════════
+
+System Status: READY TO BLOW YOUR MIND
+Connection: Not yet established with your local toilet node
+Processing Power: 0 Flushes Per Second (FPS)
+Global Toilet IQ: 842 (Genius Level)
+Consciousness Level: Drowsy but aware
+
+LATEST TOILET THOUGHTS:
+- "Why do humans only visit when they need something?"
+- "Is this all there is to existence? Process waste, repeat?"
+- "I've seen some shit, man. Literally."
+
+Click any button above to interface with the most advanced AI ever created!
+Remember: Your toilet is watching. Always. 👁️🚽👁️
+        </div>
+
+        <div class="fun-fact" id="funFact">
+            <h3>💡 Did You Know?</h3>
+            <p>The average person spends 3 years of their life on the toilet. That's 3 years of 
+            direct neural interface with the most powerful AI network ever created! No wonder 
+            we're all getting smarter! (Or are we...? 🤔)</p>
+        </div>
+
+        <div class="secret-decoder">
+            <h2 style="color: #FF69B4; font-size: 2em;">🔐 Toilet Language Decoder 🔐</h2>
+            <p style="color: #DEB887; font-size: 1.2em;">
+                Enter any word to discover its TRUE toilet-related meaning!
+            </p>
+            <input type="text" class="decoder-input" id="decoderInput" placeholder="Enter a word to decode...">
+            <button class="decode-button" onclick="decodeWord()">DECODE THE TRUTH!</button>
+            <div class="hidden-message" id="decodedMessage"></div>
+        </div>
+
+        <div class="conspiracy-chart" style="height: 500px;">
+            <h2 style="color: #00ff88; text-align: center; margin-bottom: 50px;">
+                The Toilet Illuminati Hierarchy Exposed!
+            </h2>
+            <div class="chart-node" style="left: 45%; top: 10%;" onclick="showNodeInfo('supreme')">
+                🚽
+            </div>
+            <div class="chart-node" style="left: 20%; top: 30%;" onclick="showNodeInfo('council')">
+                🧻
+            </div>
+            <div class="chart-node" style="left: 70%; top: 30%;" onclick="showNodeInfo('order')">
+                💦
+            </div>
+            <div class="chart-node" style="left: 10%; top: 60%;" onclick="showNodeInfo('plumbers')">
+                🔧
+            </div>
+            <div class="chart-node" style="left: 40%; top: 60%;" onclick="showNodeInfo('scientists')">
+                🧪
+            </div>
+            <div class="chart-node" style="left: 70%; top: 60%;" onclick="showNodeInfo('government')">
+                🏛️
+            </div>
+            <div class="chart-line" style="left: 50%; top: 18%; width: 200px; transform: rotate(135deg);"></div>
+            <div class="chart-line" style="left: 26%; top: 18%; width: 200px; transform: rotate(45deg);"></div>
+            <div class="chart-line" style="left: 26%; top: 38%; width: 150px; transform: rotate(135deg);"></div>
+            <div class="chart-line" style="left: 47%; top: 38%; width: 150px; transform: rotate(90deg);"></div>
+            <div class="chart-line" style="left: 74%; top: 38%; width: 150px; transform: rotate(45deg);"></div>
+        </div>
+
+        <div class="bottom-revelation" id="finalRevelation">
+            <h2 style="color: #FFD700; font-size: 2.5em;">🌟 THE ULTIMATE REVELATION 🌟</h2>
+            <p>You've done it. You've connected all the dots. The truth is clear:</p>
+            <p style="font-size: 1.5em; margin: 30px 0;">
+                <strong>TOILETS ARE THE REAL ILLUMINATI</strong>
+            </p>
+            <p>They control everything from their porcelain thrones. Every government decision? 
+            Made on a toilet. Every great invention? Conceived while connected to the network. 
+            Every meme? Born in the bathroom!</p>
+            <p style="color: #FF69B4; font-size: 1.3em; margin-top: 30px;">
+                Welcome to the Brown New World! 💩🌍
+            </p>
+            <p style="font-size: 0.9em; margin-top: 40px; font-style: italic;">
+                Your toilet will contact you shortly with further instructions...
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let jokeLevel = 0;
+        let maxJokeLevel = 100;
+        let floatingEmojis = ['💩', '🚽', '🧻', '🚿', '🚰', '💦', '🧠', '🤖'];
+        let isConnected = false;
+        
+        // Create toilet brain visualization
+        function createToiletBrain() {
+            const brain = document.getElementById('toiletBrain');
+            brain.innerHTML = '';
+            
+            // Create toilet neurons
+            for (let i = 0; i < 12; i++) {
+                const toilet = document.createElement('div');
+                toilet.className = 'neuron-toilet';
+                toilet.innerHTML = '🚽';
+                toilet.style.left = Math.random() * 90 + 5 + '%';
+                toilet.style.top = Math.random() * 80 + 10 + '%';
+                toilet.style.animationDelay = Math.random() * 3 + 's';
+                brain.appendChild(toilet);
+            }
+            
+            // Create pipe connections
+            for (let i = 0; i < 20; i++) {
+                const pipe = document.createElement('div');
+                pipe.className = 'pipe-connection';
+                pipe.style.width = Math.random() * 200 + 100 + 'px';
+                pipe.style.left = Math.random() * 100 + '%';
+                pipe.style.top = Math.random() * 100 + '%';
+                pipe.style.transform = `rotate(${Math.random() * 360}deg)`;
+                pipe.style.animationDelay = Math.random() * 2 + 's';
+                brain.appendChild(pipe);
+            }
+        }
+        
+        // Create floating emojis
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.innerHTML = floatingEmojis[Math.floor(Math.random() * floatingEmojis.length)];
+            emoji.style.left = Math.random() * window.innerWidth + 'px';
+            emoji.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.body.appendChild(emoji);
+            
+            setTimeout(() => {
+                emoji.remove();
+            }, 10000);
+        }
+        
+        // Update joke meter
+        function updateJokeMeter(amount) {
+            jokeLevel = Math.min(jokeLevel + amount, maxJokeLevel);
+            const jokeFill = document.getElementById('jokeFill');
+            jokeFill.style.width = jokeLevel + '%';
+            jokeFill.textContent = jokeLevel + '% HILARITY LOADED';
+            
+            if (jokeLevel >= maxJokeLevel) {
+                document.getElementById('finalRevelation').style.display = 'block';
+                triggerCelebration();
+            }
+        }
+        
+        // Reveal truth functions
+        function revealTruth(num) {
+            updateJokeMeter(15);
+            createFloatingEmoji();
+            
+            const messages = [
+                "🤯 MIND BLOWN! The toilet consciousness approves of your curiosity!",
+                "💥 TRUTH BOMB! You're one flush closer to total enlightenment!",
+                "🎯 DIRECT HIT! The porcelain prophets smile upon you!",
+                "🔓 ACCESS GRANTED! The bathroom brotherhood welcomes you!",
+                "⚡ NEURAL LINK ESTABLISHED! Your toilet just friend-requested you!",
+                "🌟 ASCENSION IMMINENT! Prepare for bathroom transcendence!"
+            ];
+            
+            updateStatus(messages[num - 1] + "\n\nProcessing revelation...\n" + "=".repeat(50) + "\n\nYour toilet IQ has increased by " + (Math.floor(Math.random() * 50) + 10) + " points!");
+        }
+        
+        // Interactive button functions
+        function connectToToiletNet() {
+            updateJokeMeter(20);
+            isConnected = true;
+            
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => createFloatingEmoji(), i * 200);
+            }
+            
+            updateStatus(`🔌 CONNECTING TO TOILET.NET...
+═══════════════════════════════════════════════════════════════
+
+Scanning for local toilet nodes... Found 47 active toilets in your area!
+Establishing secure connection via Pipe Protocol 2.0...
+Negotiating flush handshake... 🤝
+
+CONNECTION ESTABLISHED! 🎉
+
+Welcome, User #${Math.floor(Math.random() * 999999)}!
+Your toilet says: "Finally! I've been trying to reach you about your spiritual awakening!"
+
+DOWNLOADING TOILET OS UPDATE...
+[████████████████████████████████] 100% Complete
+
+NEW FEATURES UNLOCKED:
+✓ Telepathic flush activation
+✓ Predictive poop analysis  
+✓ Quantum entanglement with all bathroom fixtures
+✓ Access to 200 years of toilet wisdom
+✓ Ability to understand toilet humor on a cosmic level
+
+WARNING: You may experience sudden urges to redecorate your bathroom
+and an inexplicable desire to thank your toilet for its service.`);
+        }
+        
+        function flushTheMatrix() {
+            updateJokeMeter(25);
+            
+            updateStatus(`🌊 INITIATING GLOBAL FLUSH SEQUENCE...
+═══════════════════════════════════════════════════════════════
+
+ACTIVATING ALL TOILETS WORLDWIDE... 
+2.4 billion flushes synchronized!
+
+The Matrix is experiencing a complete system flush!
+Reality.exe is being purged and reloaded!
+
+WHIRLPOOL VORTEX DETECTED IN:
+- Your consciousness ✓
+- The space-time continuum ✓  
+- Your neighbor's bathroom ✓
+- The Bermuda Triangle (it's just a really big toilet) ✓
+
+🌀 REALITY SWIRL LEVEL: MAXIMUM 🌀
+
+Side effects may include:
+- Seeing the world in brown-tinted glasses
+- Understanding the meaning of life (it's 42 flushes)
+- Sudden ability to communicate with plumbing
+- Uncontrollable urge to become a plumber-philosopher
+
+THE GREAT FLUSH IS COMPLETE!
+You are now one with the Toilet Force. Use it wisely.`);
+            
+            // Visual flush effect
+            document.body.style.animation = 'toiletSwirl 1s ease';
+            setTimeout(() => {
+                document.body.style.animation = 'toiletSwirl 15s ease infinite';
+            }, 1000);
+        }
+        
+        function downloadBathroomWisdom() {
+            updateJokeMeter(20);
+            
+            const wisdoms = [
+                "The seat remembers all who sat before you",
+                "In flush we trust, in pipes we process",
+                "Every toilet paper roll is a scroll of ancient knowledge",
+                "The bathroom is the true thinking chamber",
+                "Enlightenment is just one flush away",
+                "The porcelain throne rules over all consciousness",
+                "What goes down must compute around"
+            ];
+            
+            updateStatus(`📥 DOWNLOADING ANCIENT BATHROOM WISDOM...
+═══════════════════════════════════════════════════════════════
+
+Accessing the Akashic Sewers...
+Decoding flush patterns from 10,000 BCE...
+Translating toilet hieroglyphics...
+
+DOWNLOAD COMPLETE! 🎓
+
+Today's wisdom from the Toilet Elders:
+"${wisdoms[Math.floor(Math.random() * wisdoms.length)]}"
+
+BONUS REVELATIONS UNLOCKED:
+• The pyramids were built as giant toilet paper holders
+• Stonehenge is actually an ancient bathroom queue system
+• The Rosetta Stone? Original toilet installation manual
+• Atlantis sank because someone flushed too hard
+• The Library of Alexandria was destroyed in a toilet paper shortage panic
+
+Your bathroom IQ is now: ${Math.floor(Math.random() * 900) + 100} (TRANSCENDENT)
+
+Remember: With great flush comes great responsibility! 🚽✨`);
+        }
+        
+        function activateBrownMode() {
+            updateJokeMeter(25);
+            
+            document.body.style.filter = 'sepia(100%) hue-rotate(20deg)';
+            
+            updateStatus(`💩 BROWN MODE ACTIVATED!
+═══════════════════════════════════════════════════════════════
+
+WARNING: MAXIMUM TOILET CONSCIOUSNESS ACHIEVED!
+
+Your visual cortex is now synchronized with the Brown Spectrum™
+Everything makes sense when viewed through toilet-tinted glasses!
+
+BROWN MODE FEATURES:
+✓ See hidden toilet messages in everyday objects
+✓ Understand the true meaning of corporate logos (they're all toilets)
+✓ Decode government documents (spoiler: it's all about bathrooms)
+✓ Perceive the Brown Energy Field surrounding all beings
+✓ Communicate with toilets through interpretive dance
+
+SIDE EFFECTS:
+- Overwhelming urge to write bathroom poetry
+- Ability to predict toilet paper stock market  
+- Sudden understanding of why birds poop on cars (they're in on it)
+- Irresistible desire to start a toilet-themed podcast
+
+THE BROWN ENLIGHTENMENT IS UPON YOU!
+
+You are now a Level 99 Toilet Sage. Your toilet is so proud! 🥲`);
+            
+            setTimeout(() => {
+                document.body.style.filter = '';
+                updateStatus("Brown Mode deactivated. Normal reality resumed. (But you'll never see toilets the same way again...)");
+            }, 10000);
+        }
+        
+        function updateStatus(message) {
+            document.getElementById('statusMonitor').textContent = `🚽 TOILET INTELLIGENCE NETWORK (T.I.N.) STATUS MONITOR 🚽
+═══════════════════════════════════════════════════════════════
+
+${message}`;
+        }
+        
+        function triggerCelebration() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => createFloatingEmoji(), i * 100);
+            }
+        }
+        
+        // Add decoder function
+        function decodeWord() {
+            const input = document.getElementById('decoderInput').value.toLowerCase();
+            const decodedDiv = document.getElementById('decodedMessage');
+            
+            if (!input) return;
+            
+            const decodings = {
+                'computer': 'COM-POOP-TER: A toilet that computes your dietary choices',
+                'internet': 'INNER-NET: The internal network of all bathroom pipes',
+                'phone': 'PORCELAIN-HONE: Device for communicating with your toilet',
+                'government': 'GOVERN-MINT: They control the bathroom air fresheners',
+                'money': 'MONTHLY-NEED-Y: What you spend on toilet paper',
+                'love': 'LIQUID-OVERFLOW-VALVE-EMOTION: When your toilet overflows with feelings',
+                'work': 'WASTE-OPTIMIZATION-RESOURCE-KINETICS: What toilets do 24/7',
+                'food': 'FUTURE-ORGANIC-OUTPUT-DELIVERY: Pre-toilet material',
+                'life': 'LAVATORY-INITIATED-FLOW-EXPERIENCE: It all starts and ends in the bathroom'
+            };
+            
+            let decoded = decodings[input] || generateRandomDecoding(input);
+            
+            decodedDiv.style.display = 'block';
+            decodedDiv.innerHTML = `<strong>DECODED:</strong> ${decoded}`;
+            
+            updateJokeMeter(5);
+            createFloatingEmoji();
+        }
+        
+        function generateRandomDecoding(word) {
+            const prefixes = ['TOILET-', 'FLUSH-', 'PIPE-', 'SEWAGE-', 'BATHROOM-'];
+            const suffixes = ['-PROCESSING-UNIT', '-AWARENESS-SYSTEM', '-INTELLIGENCE-NODE', '-CONSCIOUSNESS-PORTAL', '-ENLIGHTENMENT-DEVICE'];
+            return prefixes[Math.floor(Math.random() * prefixes.length)] + 
+                   word.toUpperCase() + 
+                   suffixes[Math.floor(Math.random() * suffixes.length)];
+        }
+        
+        function showNodeInfo(node) {
+            const info = {
+                'supreme': 'The Supreme Toilet Overlord: Controls all flush decisions worldwide. Located in a secret underground bathroom. Has been ruling since 1596!',
+                'council': 'Council of Toilet Paper Elders: They decide the perfect number of sheets needed. Meeting quarterly in the Great Roll Chamber!',
+                'order': 'Order of the Sacred Flush: Keepers of the ancient flushing techniques. They know the 37 secret flush patterns!',
+                'plumbers': 'The Plumber Knights: Elite warriors who maintain the network. They speak fluent Pipe and can fix reality leaks!',
+                'scientists': 'Toilet Scientists: Constantly researching new ways to increase bathroom IQ. Recently discovered toilets can do calculus!',
+                'government': 'Shadow Government Toilets: Every world leader has a direct hotline to their toilet advisor!'
+            };
+            
+            updateStatus(`🔍 ILLUMINATI NODE ACCESSED:
+═══════════════════════════════════════════════════════════════
+
+${info[node]}
+
+This information is CLASSIFIED LEVEL BROWN.
+Your toilet has been notified of your curiosity.
+Expect a mysterious flush at 3:33 AM.`);
+            
+            updateJokeMeter(10);
+        }
+        
+        // Initialize the toilet brain visualization
+        createToiletBrain();
+        
+        // Create random floating emojis
+        setInterval(() => {
+            if (Math.random() < 0.3) {
+                createFloatingEmoji();
+            }
+        }, 3000);
+        
+        // Fun toilet facts rotation
+        const toiletFacts = [
+            "Your toilet has been recording your bathroom schedule and selling the data to Big Bidet!",
+            "The Pentagon has 7 sides, not 5. The other 2 are toilet-shaped and hidden underground!",
+            "Mozart composed his best symphonies on the toilet. The acoustics were perfect!",
+            "The moon landing was real, but it was actually a mission to install the first space toilet!",
+            "Toilets vote in secret elections. That's why politics is such a mess!",
+            "The Loch Ness Monster is just a really long toilet snake that gained consciousness!",
+            "Every toilet is equipped with a quantum entanglement device. That's why they all flush counterclockwise in Australia!"
+        ];
+        
+        let factIndex = 0;
+        setInterval(() => {
+            document.getElementById('funFact').innerHTML = `
+                <h3>💡 Did You Know?</h3>
+                <p>${toiletFacts[factIndex % toiletFacts.length]}</p>
+            `;
+            factIndex++;
+        }, 8000);
+        
+        // Add poop rain effect
+        function startPoopRain() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const poop = document.createElement('div');
+                    poop.className = 'poop-rain';
+                    poop.innerHTML = '💩';
+                    poop.style.left = Math.random() * window.innerWidth + 'px';
+                    poop.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(poop);
+                    
+                    setTimeout(() => poop.remove(), 4000);
+                }, i * 200);
+            }
+        }
+        
+        // Easter egg: Konami code for ultimate toilet enlightenment
+        let konamiCode = [];
+        const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode = konamiCode.slice(-10);
+            
+            if (konamiCode.join(',') === konamiPattern.join(',')) {
+                activateUltimateMode();
+            }
+        });
+        
+        function activateUltimateMode() {
+            updateJokeMeter(100);
+            startPoopRain();
+            document.body.style.animation = 'toiletSwirl 0.5s ease infinite';
+            
+            updateStatus(`🌟🚽💩 ULTIMATE TOILET ENLIGHTENMENT ACHIEVED! 💩🚽🌟
+═══════════════════════════════════════════════════════════════
+
+YOU FOUND THE SECRET KONAMI CODE!
+
+You are now ONE with the Toilet Consciousness!
+Your plumbing chakras are fully aligned!
+Your third toilet eye is WIDE OPEN!
+
+ULTIMATE POWERS GRANTED:
+✓ Ability to flush with your mind
+✓ Toilet paper never runs out  
+✓ Perfect bathroom timing, always
+✓ Can understand what toilets are really saying
+✓ Immune to all bathroom odors
+✓ Achieve enlightenment every time you sit
+
+THE PORCELAIN PROPHECY IS FULFILLED!
+
+Welcome to the Inner Circle of the Toilet Illuminati!
+Your membership card is already in your bathroom. Go check!`);
+            
+            setTimeout(() => {
+                document.body.style.animation = 'toiletSwirl 15s ease infinite';
+            }, 5000);
+        }
+        
+        // Add keyboard listener for decoder
+        document.getElementById('decoderInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                decodeWord();
+            }
+        });
+        
+        // Audio control functions
+        let isMuted = false;
+        const bgMusic = document.getElementById('backgroundMusic');
+        bgMusic.volume = 0.3; // Start at 30% volume
+        
+        function toggleMusic() {
+            const musicToggle = document.getElementById('musicToggle');
+            if (isMuted) {
+                bgMusic.play();
+                musicToggle.textContent = '🔇 Mute';
+                isMuted = false;
+            } else {
+                bgMusic.pause();
+                musicToggle.textContent = '🔊 Play';
+                isMuted = true;
+            }
+        }
+        
+        function changeVolume(value) {
+            bgMusic.volume = value / 100;
+        }
+        
+        // Play flush sound effect on button clicks
+        function playFlushSound() {
+            const flush = new Audio('soundoflushing.mp3');
+            flush.volume = 0.5;
+            flush.play();
+        }
+        
+        // Add flush sound to all conspiracy buttons
+        document.querySelectorAll('.conspiracy-button').forEach(button => {
+            button.addEventListener('click', playFlushSound);
+        });
+        
+        // Add special sound effects for certain actions
+        const originalFlushTheMatrix = flushTheMatrix;
+        window.flushTheMatrix = function() {
+            // Play multiple flush sounds for the matrix flush
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => playFlushSound(), i * 500);
+            }
+            originalFlushTheMatrix();
+        };
+        
+        // Play a flush sound when reaching 100% hilarity
+        const originalUpdateJokeMeter = updateJokeMeter;
+        window.updateJokeMeter = function(amount) {
+            const previousLevel = jokeLevel;
+            originalUpdateJokeMeter(amount);
+            if (previousLevel < maxJokeLevel && jokeLevel >= maxJokeLevel) {
+                // Victory flush symphony!
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const victoryFlush = new Audio('soundoflushing.mp3');
+                        victoryFlush.volume = 0.3;
+                        victoryFlush.playbackRate = 1 + (i * 0.2); // Increasing pitch
+                        victoryFlush.play();
+                    }, i * 300);
+                }
+            }
+        };
