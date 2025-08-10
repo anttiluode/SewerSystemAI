@@ -687,33 +687,26 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
         </div>
     </div>
 
-    <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        const GITHUB_AUDIO_URL = 'https://raw.githubusercontent.com/anttiluode/SewerSystemAI/main/soundoflushing.mp3';
+        // CORRECTED URL: The filename is "soundofflushing.mp3"
+        const CDN_AUDIO_URL = 'https://cdn.jsdelivr.net/gh/anttiluode/SewerSystemAI@main/soundofflushing.mp3';
 
         let jokeLevel = 0;
         const maxJokeLevel = 100;
         const floatingEmojis = ['💩', '🚽', '🧻', '🚿', '🚰', '💦', '🧠', '🤖'];
-        
+
         const bgMusic = document.getElementById('backgroundMusic');
+        // Set the source correctly in both the HTML and here for certainty
+        if (bgMusic.querySelector('source')) {
+            bgMusic.querySelector('source').src = CDN_AUDIO_URL;
+        }
+        bgMusic.load(); // Tell the browser to load the new source
+
         const musicToggleBtn = document.getElementById('toggleMusicBtn');
         const musicToggleText = document.getElementById('musicToggle');
         const volumeSlider = document.getElementById('volumeSlider');
-        
-        let hasInteracted = false;
-        
-        function playOnFirstInteraction() {
-            if (hasInteracted) return;
-            hasInteracted = true;
-            bgMusic.play().catch(e => console.error("Autoplay was prevented:", e));
-            musicToggleText.textContent = '🔇 Mute';
-            document.body.removeEventListener('click', playOnFirstInteraction);
-            document.body.removeEventListener('keydown', playOnFirstInteraction);
-        }
-
-        document.body.addEventListener('click', playOnFirstInteraction);
-        document.body.addEventListener('keydown', playOnFirstInteraction);
 
         // --- All functions are defined here ---
 
@@ -751,9 +744,9 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
             document.body.appendChild(emoji);
             setTimeout(() => emoji.remove(), 10000);
         }
-        
+
         function playFlushSound() {
-            const flush = new Audio(GITHUB_AUDIO_URL);
+            const flush = new Audio(CDN_AUDIO_URL);
             flush.volume = 0.5;
             flush.play().catch(e => console.error("Sound effect failed to play:", e));
         }
@@ -768,9 +761,9 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
             if (previousLevel < maxJokeLevel && jokeLevel >= maxJokeLevel) {
                 document.getElementById('finalRevelation').style.display = 'block';
                 triggerCelebration();
-                 for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < 5; i++) {
                     setTimeout(() => {
-                        const victoryFlush = new Audio(GITHUB_AUDIO_URL);
+                        const victoryFlush = new Audio(CDN_AUDIO_URL);
                         victoryFlush.volume = 0.3;
                         victoryFlush.playbackRate = 1 + (i * 0.2);
                         victoryFlush.play();
@@ -784,16 +777,23 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
                 setTimeout(createFloatingEmoji, i * 100);
             }
         }
-        
+
         function updateStatus(message) {
             document.getElementById('statusMonitor').textContent = `🚽 TOILET INTELLIGENCE NETWORK (T.I.N.) STATUS MONITOR 🚽
 ═══════════════════════════════════════════════════════════════\n\n${message}`;
         }
-        
+
         function revealTruth(num) {
             updateJokeMeter(15);
             createFloatingEmoji();
-            const messages = ["🤯 MIND BLOWN!...", "💥 TRUTH BOMB!...", "🎯 DIRECT HIT!...", "🔓 ACCESS GRANTED!...", "⚡ NEURAL LINK ESTABLISHED!...", "🌟 ASCENSION IMMINENT!..."];
+            const messages = [
+                "🤯 MIND BLOWN! The toilet consciousness approves of your curiosity!",
+                "💥 TRUTH BOMB! You're one flush closer to total enlightenment!",
+                "🎯 DIRECT HIT! The porcelain prophets smile upon you!",
+                "🔓 ACCESS GRANTED! The bathroom brotherhood welcomes you!",
+                "⚡ NEURAL LINK ESTABLISHED! Your toilet just friend-requested you!",
+                "🌟 ASCENSION IMMINENT! Prepare for bathroom transcendence!"
+            ];
             updateStatus(`${messages[num - 1]}\n\nProcessing revelation...\n${"=".repeat(50)}\n\nYour toilet IQ has increased by ${Math.floor(Math.random() * 50) + 10} points!`);
         }
 
@@ -805,7 +805,7 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
 
         function flushTheMatrix() {
             updateJokeMeter(25);
-             for (let i = 0; i < 3; i++) setTimeout(playFlushSound, i * 500);
+            for (let i = 0; i < 3; i++) setTimeout(playFlushSound, i * 500);
             updateStatus(`🌊 INITIATING GLOBAL FLUSH SEQUENCE...\n═══════════════════════════════════════════════════════════════\n\nACTIVATING ALL TOILETS WORLDWIDE... \n2.4 billion flushes synchronized!\n\nThe Matrix is experiencing a complete system flush!\nReality.exe is being purged and reloaded!\n\nWHIRLPOOL VORTEX DETECTED IN:\n- Your consciousness ✓\n- The space-time continuum ✓  \n- Your neighbor's bathroom ✓\n- The Bermuda Triangle (it's just a really big toilet) ✓\n\n🌀 REALITY SWIRL LEVEL: MAXIMUM 🌀\n\nSide effects may include:\n- Seeing the world in brown-tinted glasses\n- Understanding the meaning of life (it's 42 flushes)\n- Sudden ability to communicate with plumbing\n- Uncontrollable urge to become a plumber-philosopher\n\nTHE GREAT FLUSH IS COMPLETE!\nYou are now one with the Toilet Force. Use it wisely.`);
             document.body.style.animation = 'toiletSwirl 1s ease';
             setTimeout(() => { document.body.style.animation = 'toiletSwirl 15s ease infinite'; }, 1000);
@@ -854,7 +854,7 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
             updateStatus(`🌟🚽💩 ULTIMATE TOILET ENLIGHTENMENT ACHIEVED! 💩🚽🌟\n═══════════════════════════════════════════════════════════════\n\nYOU FOUND THE SECRET KONAMI CODE!\n\nYou are now ONE with the Toilet Consciousness!\nYour plumbing chakras are fully aligned!\nYour third toilet eye is WIDE OPEN!\n\nTHE PORCELAIN PROPHECY IS FULFILLED!\n\nWelcome to the Inner Circle of the Toilet Illuminati!`);
             setTimeout(() => { document.body.style.animation = 'toiletSwirl 15s ease infinite'; }, 5000);
         }
-        
+
         function startPoopRain() {
             for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
@@ -868,12 +868,13 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
                 }, i * 200);
             }
         }
-        
+
         // --- Event Listeners ---
-        
+
+        // SIMPLIFIED: Clean and robust play/pause toggle
         musicToggleBtn.addEventListener('click', () => {
-             if (bgMusic.paused) {
-                bgMusic.play();
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.error("Playback failed:", e));
                 musicToggleText.textContent = '🔇 Mute';
             } else {
                 bgMusic.pause();
@@ -893,6 +894,11 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
             node.addEventListener('click', () => showNodeInfo(node.dataset.node));
         });
 
+        // Add event listeners to all conspiracy buttons to play the flush sound
+        document.querySelectorAll('.conspiracy-button').forEach(button => {
+            button.addEventListener('click', playFlushSound);
+        });
+
         document.getElementById('connectBtn').addEventListener('click', connectToToiletNet);
         document.getElementById('flushMatrixBtn').addEventListener('click', flushTheMatrix);
         document.getElementById('downloadWisdomBtn').addEventListener('click', downloadBathroomWisdom);
@@ -901,7 +907,7 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
         document.getElementById('decoderInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') decodeWord();
         });
-        
+
         // Konami Code
         let konamiCode = [];
         const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
@@ -933,6 +939,7 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
         createToiletBrain();
         setInterval(() => { if (Math.random() < 0.3) createFloatingEmoji(); }, 3000);
     });
-    </script>
-</body>
-</html>
+</script>
+    </body>
+    
+    </html>
