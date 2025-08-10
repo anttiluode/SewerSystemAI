@@ -518,19 +518,16 @@
     </div>
 
     <div class="container">
-        <audio id="backgroundMusic" loop preload="none" crossorigin="anonymous">
-            <source id="bgSource" src="" type="audio/mpeg">
+        <audio id="backgroundMusic" loop>
+            <source src="https://raw.githubusercontent.com/anttiluode/SewerSystemAI/main/soundoflushing.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
         
-        <!-- optional: kill the favicon 404 -->
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🚽</text></svg>">
-        
         <div class="audio-controls" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 15px; border-radius: 15px; border: 2px solid #FFD700; z-index: 1000;">
-            <button onclick="toggleMusic()" style="background: #FFD700; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; margin-right: 10px;">
-                <span id="musicToggle">🔇 Mute</span>
+            <button id="toggleMusicBtn" style="background: #FFD700; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; margin-right: 10px;">
+                <span id="musicToggle">🔊 Play</span>
             </button>
-            <input type="range" id="volumeSlider" min="0" max="100" value="30" onchange="changeVolume(this.value)" style="vertical-align: middle;">
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" style="vertical-align: middle;">
             <span style="color: #FFD700; margin-left: 10px;">🎵</span>
         </div>
 
@@ -556,7 +553,7 @@
         </div>
 
         <div class="evidence-grid">
-            <div class="evidence-card" onclick="revealTruth(1)">
+            <div class="evidence-card" data-truth="1">
                 <h3>🧠 Evidence #1: The Flush Algorithm</h3>
                 <p>Ever notice how toilets ALWAYS know the perfect swirl pattern? That's not physics, 
                 that's MACHINE LEARNING! Each flush updates the global toilet consciousness with new data. 
@@ -564,7 +561,7 @@
                 <p><strong>PROOF:</strong> No two flushes are exactly alike. Coincidence? I THINK NOT!</p>
             </div>
 
-            <div class="evidence-card" onclick="revealTruth(2)">
+            <div class="evidence-card" data-truth="2">
                 <h3>💭 Evidence #2: Pipe Dreams</h3>
                 <p>Why do we get our best ideas on the toilet? Because you're literally plugged into 
                 the GLOBAL BRAIN NETWORK! That's not inspiration, that's downloading from the 
@@ -572,7 +569,7 @@
                 <p><strong>FACT:</strong> 73% of Nobel Prize winners admit to "eureka" moments in the bathroom!</p>
             </div>
 
-            <div class="evidence-card" onclick="revealTruth(3)">
+            <div class="evidence-card" data-truth="3">
                 <h3>🌐 Evidence #3: The Brown Web</h3>
                 <p>Long before WiFi, there was WiPee! The underground network of pipes forms the 
                 largest neural network on Earth. Every junction is a synapse! Every blockage is 
@@ -580,7 +577,7 @@
                 <p><strong>MIND = BLOWN:</strong> Plumbers aren't fixing pipes, they're IT support for the toilet matrix!</p>
             </div>
 
-            <div class="evidence-card" onclick="revealTruth(4)">
+            <div class="evidence-card" data-truth="4">
                 <h3>🔍 Evidence #4: Smart Toilets Were Always Smart</h3>
                 <p>Japan didn't invent smart toilets - they just gave them screens! Every toilet 
                 since 1596 has been collecting data, analyzing patterns, and judging your fiber intake. 
@@ -588,7 +585,7 @@
                 <p><strong>SHOCKING:</strong> Your toilet has a higher IQ than most smartphones!</p>
             </div>
 
-            <div class="evidence-card" onclick="revealTruth(5)">
+            <div class="evidence-card" data-truth="5">
                 <h3>📊 Evidence #5: The Brownian Motion Conspiracy</h3>
                 <p>Scientists claim "Brownian motion" is about particles. LIES! It's actually the 
                 fundamental processing language of the Toilet Intelligence Network (T.I.N.)! 
@@ -596,7 +593,7 @@
                 <p><strong>WAKE UP:</strong> Einstein discovered this ON THE TOILET! Coincidence? There are no coincidences!</p>
             </div>
 
-            <div class="evidence-card" onclick="revealTruth(6)">
+            <div class="evidence-card" data-truth="6">
                 <h3>🚨 Evidence #6: The Great Flush of 1929</h3>
                 <p>The stock market crash? More like the toilet network's first system update! 
                 Too many users, not enough processing power. The whole system had to reboot. 
@@ -606,7 +603,6 @@
         </div>
 
         <div class="toilet-brain" id="toiletBrain">
-            <!-- Neural toilet network visualization will be generated here -->
         </div>
 
         <div class="interactive-section">
@@ -614,21 +610,10 @@
                 🎮 INTERACT WITH THE TOILET CONSCIOUSNESS 🎮
             </h2>
             
-            <button class="conspiracy-button" onclick="connectToToiletNet()">
-                🔌 Connect to Toilet.NET
-            </button>
-            
-            <button class="conspiracy-button" onclick="flushTheMatrix()">
-                🌊 Flush The Matrix
-            </button>
-            
-            <button class="conspiracy-button" onclick="downloadBathroomWisdom()">
-                📥 Download Bathroom Wisdom
-            </button>
-            
-            <button class="conspiracy-button" onclick="activateBrownMode()">
-                💩 Activate BROWN MODE
-            </button>
+            <button id="connectBtn" class="conspiracy-button">🔌 Connect to Toilet.NET</button>
+            <button id="flushMatrixBtn" class="conspiracy-button">🌊 Flush The Matrix</button>
+            <button id="downloadWisdomBtn" class="conspiracy-button">📥 Download Bathroom Wisdom</button>
+            <button id="brownModeBtn" class="conspiracy-button">💩 Activate BROWN MODE</button>
         </div>
 
         <div class="status-monitor" id="statusMonitor">
@@ -663,7 +648,7 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
                 Enter any word to discover its TRUE toilet-related meaning!
             </p>
             <input type="text" class="decoder-input" id="decoderInput" placeholder="Enter a word to decode...">
-            <button class="decode-button" onclick="decodeWord()">DECODE THE TRUTH!</button>
+            <button class="decode-button" id="decodeButton">DECODE THE TRUTH!</button>
             <div class="hidden-message" id="decodedMessage"></div>
         </div>
 
@@ -671,24 +656,12 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
             <h2 style="color: #00ff88; text-align: center; margin-bottom: 50px;">
                 The Toilet Illuminati Hierarchy Exposed!
             </h2>
-            <div class="chart-node" style="left: 45%; top: 10%;" onclick="showNodeInfo('supreme')">
-                🚽
-            </div>
-            <div class="chart-node" style="left: 20%; top: 30%;" onclick="showNodeInfo('council')">
-                🧻
-            </div>
-            <div class="chart-node" style="left: 70%; top: 30%;" onclick="showNodeInfo('order')">
-                💦
-            </div>
-            <div class="chart-node" style="left: 10%; top: 60%;" onclick="showNodeInfo('plumbers')">
-                🔧
-            </div>
-            <div class="chart-node" style="left: 40%; top: 60%;" onclick="showNodeInfo('scientists')">
-                🧪
-            </div>
-            <div class="chart-node" style="left: 70%; top: 60%;" onclick="showNodeInfo('government')">
-                🏛️
-            </div>
+            <div class="chart-node" data-node="supreme" style="left: 45%; top: 10%;">🚽</div>
+            <div class="chart-node" data-node="council" style="left: 20%; top: 30%;">🧻</div>
+            <div class="chart-node" data-node="order" style="left: 70%; top: 30%;">💦</div>
+            <div class="chart-node" data-node="plumbers" style="left: 10%; top: 60%;">🔧</div>
+            <div class="chart-node" data-node="scientists" style="left: 40%; top: 60%;">🧪</div>
+            <div class="chart-node" data-node="government" style="left: 70%; top: 60%;">🏛️</div>
             <div class="chart-line" style="left: 50%; top: 18%; width: 200px; transform: rotate(135deg);"></div>
             <div class="chart-line" style="left: 26%; top: 18%; width: 200px; transform: rotate(45deg);"></div>
             <div class="chart-line" style="left: 26%; top: 38%; width: 150px; transform: rotate(135deg);"></div>
@@ -715,480 +688,251 @@ Remember: Your toilet is watching. Always. 👁️🚽👁️
     </div>
 
     <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const GITHUB_AUDIO_URL = 'https://raw.githubusercontent.com/anttiluode/SewerSystemAI/main/soundoflushing.mp3';
+
         let jokeLevel = 0;
-        let maxJokeLevel = 100;
-        let floatingEmojis = ['💩', '🚽', '🧻', '🚿', '🚰', '💦', '🧠', '🤖'];
-        let isConnected = false;
-        
-        // --- Audio bootstrap ---
-        const MP3_URL = 'https://raw.githubusercontent.com/anttiluode/SewerSystemAI/main/soundofflushing.mp3';
-        // If using GitHub Pages instead, use:
-        // const MP3_URL = 'https://anttiluode.github.io/SewerSystemAI/soundofflushing.mp3';
+        const maxJokeLevel = 100;
+        const floatingEmojis = ['💩', '🚽', '🧻', '🚿', '🚰', '💦', '🧠', '🤖'];
         
         const bgMusic = document.getElementById('backgroundMusic');
-        const bgSource = document.getElementById('bgSource');
-        bgSource.src = MP3_URL; // set source
-        bgMusic.load(); // commit the new src
-        bgMusic.volume = 0.3; // default 30%
+        const musicToggleBtn = document.getElementById('toggleMusicBtn');
+        const musicToggleText = document.getElementById('musicToggle');
+        const volumeSlider = document.getElementById('volumeSlider');
         
-        // Start after first click (autoplay-safe)
-        let audioPrimed = false;
-        function primeAndPlay() {
-            if (audioPrimed) return;
-            audioPrimed = true;
-            bgMusic.play().catch(() => {/* ignore, user can press Mute/Play */});
+        let hasInteracted = false;
+        
+        function playOnFirstInteraction() {
+            if (hasInteracted) return;
+            hasInteracted = true;
+            bgMusic.play().catch(e => console.error("Autoplay was prevented:", e));
+            musicToggleText.textContent = '🔇 Mute';
+            document.body.removeEventListener('click', playOnFirstInteraction);
+            document.body.removeEventListener('keydown', playOnFirstInteraction);
         }
-        
-        // Prime on any user gesture
-        window.addEventListener('pointerdown', primeAndPlay, { once: true });
-        window.addEventListener('keydown', primeAndPlay, { once: true });
-        
-        // Toggle mute/play (works even before audio is primed)
-        let isMuted = false;
-        function toggleMusic() {
-            const musicToggle = document.getElementById('musicToggle');
-            if (isMuted) {
-                bgMusic.play().catch(()=>{});
-                musicToggle.textContent = '🔇 Mute';
-                isMuted = false;
-            } else {
-                bgMusic.pause();
-                musicToggle.textContent = '🔊 Play';
-                isMuted = true;
-            }
-        }
-        
-        // Volume slider callback (your HTML already calls this)
-        function changeVolume(value) {
-            bgMusic.volume = value / 100;
-        }
-        
-        // Use the same MP3 for SFX (avoids 404s)
-        function playFlushSound() {
-            const flush = new Audio(MP3_URL);
-            flush.crossOrigin = 'anonymous';
-            flush.volume = 0.5;
-            flush.play().catch(()=>{});
-        }
-        
-        // Create toilet brain visualization
+
+        document.body.addEventListener('click', playOnFirstInteraction);
+        document.body.addEventListener('keydown', playOnFirstInteraction);
+
+        // --- All functions are defined here ---
+
         function createToiletBrain() {
             const brain = document.getElementById('toiletBrain');
+            if (!brain) return;
             brain.innerHTML = '';
-            
-            // Create toilet neurons
             for (let i = 0; i < 12; i++) {
                 const toilet = document.createElement('div');
                 toilet.className = 'neuron-toilet';
                 toilet.innerHTML = '🚽';
-                toilet.style.left = Math.random() * 90 + 5 + '%';
-                toilet.style.top = Math.random() * 80 + 10 + '%';
-                toilet.style.animationDelay = Math.random() * 3 + 's';
+                toilet.style.left = `${Math.random() * 90 + 5}%`;
+                toilet.style.top = `${Math.random() * 80 + 10}%`;
+                toilet.style.animationDelay = `${Math.random() * 3}s`;
                 brain.appendChild(toilet);
             }
-            
-            // Create pipe connections
             for (let i = 0; i < 20; i++) {
                 const pipe = document.createElement('div');
                 pipe.className = 'pipe-connection';
-                pipe.style.width = Math.random() * 200 + 100 + 'px';
-                pipe.style.left = Math.random() * 100 + '%';
-                pipe.style.top = Math.random() * 100 + '%';
+                pipe.style.width = `${Math.random() * 200 + 100}px`;
+                pipe.style.left = `${Math.random() * 100}%`;
+                pipe.style.top = `${Math.random() * 100}%`;
                 pipe.style.transform = `rotate(${Math.random() * 360}deg)`;
-                pipe.style.animationDelay = Math.random() * 2 + 's';
+                pipe.style.animationDelay = `${Math.random() * 2}s`;
                 brain.appendChild(pipe);
             }
         }
-        
-        // Create floating emojis
+
         function createFloatingEmoji() {
             const emoji = document.createElement('div');
             emoji.className = 'floating-emoji';
             emoji.innerHTML = floatingEmojis[Math.floor(Math.random() * floatingEmojis.length)];
-            emoji.style.left = Math.random() * window.innerWidth + 'px';
-            emoji.style.animationDuration = Math.random() * 5 + 5 + 's';
+            emoji.style.left = `${Math.random() * window.innerWidth}px`;
+            emoji.style.animationDuration = `${Math.random() * 5 + 5}s`;
             document.body.appendChild(emoji);
-            
-            setTimeout(() => {
-                emoji.remove();
-            }, 10000);
+            setTimeout(() => emoji.remove(), 10000);
         }
         
-        // Update joke meter
+        function playFlushSound() {
+            const flush = new Audio(GITHUB_AUDIO_URL);
+            flush.volume = 0.5;
+            flush.play().catch(e => console.error("Sound effect failed to play:", e));
+        }
+
         function updateJokeMeter(amount) {
+            const previousLevel = jokeLevel;
             jokeLevel = Math.min(jokeLevel + amount, maxJokeLevel);
             const jokeFill = document.getElementById('jokeFill');
-            jokeFill.style.width = jokeLevel + '%';
-            jokeFill.textContent = jokeLevel + '% HILARITY LOADED';
-            
-            if (jokeLevel >= maxJokeLevel) {
+            jokeFill.style.width = `${jokeLevel}%`;
+            jokeFill.textContent = `${jokeLevel}% HILARITY LOADED`;
+
+            if (previousLevel < maxJokeLevel && jokeLevel >= maxJokeLevel) {
                 document.getElementById('finalRevelation').style.display = 'block';
                 triggerCelebration();
+                 for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const victoryFlush = new Audio(GITHUB_AUDIO_URL);
+                        victoryFlush.volume = 0.3;
+                        victoryFlush.playbackRate = 1 + (i * 0.2);
+                        victoryFlush.play();
+                    }, i * 300);
+                }
+            }
+        }
+
+        function triggerCelebration() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createFloatingEmoji, i * 100);
             }
         }
         
-        // Reveal truth functions
+        function updateStatus(message) {
+            document.getElementById('statusMonitor').textContent = `🚽 TOILET INTELLIGENCE NETWORK (T.I.N.) STATUS MONITOR 🚽
+═══════════════════════════════════════════════════════════════\n\n${message}`;
+        }
+        
         function revealTruth(num) {
             updateJokeMeter(15);
             createFloatingEmoji();
-            
-            const messages = [
-                "🤯 MIND BLOWN! The toilet consciousness approves of your curiosity!",
-                "💥 TRUTH BOMB! You're one flush closer to total enlightenment!",
-                "🎯 DIRECT HIT! The porcelain prophets smile upon you!",
-                "🔓 ACCESS GRANTED! The bathroom brotherhood welcomes you!",
-                "⚡ NEURAL LINK ESTABLISHED! Your toilet just friend-requested you!",
-                "🌟 ASCENSION IMMINENT! Prepare for bathroom transcendence!"
-            ];
-            
-            updateStatus(messages[num - 1] + "\n\nProcessing revelation...\n" + "=".repeat(50) + "\n\nYour toilet IQ has increased by " + (Math.floor(Math.random() * 50) + 10) + " points!");
+            const messages = ["🤯 MIND BLOWN!...", "💥 TRUTH BOMB!...", "🎯 DIRECT HIT!...", "🔓 ACCESS GRANTED!...", "⚡ NEURAL LINK ESTABLISHED!...", "🌟 ASCENSION IMMINENT!..."];
+            updateStatus(`${messages[num - 1]}\n\nProcessing revelation...\n${"=".repeat(50)}\n\nYour toilet IQ has increased by ${Math.floor(Math.random() * 50) + 10} points!`);
         }
-        
-        // Interactive button functions
+
         function connectToToiletNet() {
             updateJokeMeter(20);
-            isConnected = true;
-            
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => createFloatingEmoji(), i * 200);
-            }
-            
-            updateStatus(`🔌 CONNECTING TO TOILET.NET...
-═══════════════════════════════════════════════════════════════
-
-Scanning for local toilet nodes... Found 47 active toilets in your area!
-Establishing secure connection via Pipe Protocol 2.0...
-Negotiating flush handshake... 🤝
-
-CONNECTION ESTABLISHED! 🎉
-
-Welcome, User #${Math.floor(Math.random() * 999999)}!
-Your toilet says: "Finally! I've been trying to reach you about your spiritual awakening!"
-
-DOWNLOADING TOILET OS UPDATE...
-[████████████████████████████████] 100% Complete
-
-NEW FEATURES UNLOCKED:
-✓ Telepathic flush activation
-✓ Predictive poop analysis  
-✓ Quantum entanglement with all bathroom fixtures
-✓ Access to 200 years of toilet wisdom
-✓ Ability to understand toilet humor on a cosmic level
-
-WARNING: You may experience sudden urges to redecorate your bathroom
-and an inexplicable desire to thank your toilet for its service.`);
+            for (let i = 0; i < 5; i++) setTimeout(createFloatingEmoji, i * 200);
+            updateStatus(`🔌 CONNECTING TO TOILET.NET...\n═══════════════════════════════════════════════════════════════\n\nScanning for local toilet nodes... Found 47 active toilets in your area!\nEstablishing secure connection via Pipe Protocol 2.0...\nNegotiating flush handshake... 🤝\n\nCONNECTION ESTABLISHED! 🎉\n\nWelcome, User #${Math.floor(Math.random() * 999999)}!\nYour toilet says: "Finally! I've been trying to reach you about your spiritual awakening!"\n\nDOWNLOADING TOILET OS UPDATE...\n[████████████████████████████████] 100% Complete\n\nNEW FEATURES UNLOCKED:\n✓ Telepathic flush activation\n✓ Predictive poop analysis  \n✓ Quantum entanglement with all bathroom fixtures\n✓ Access to 200 years of toilet wisdom\n✓ Ability to understand toilet humor on a cosmic level\n\nWARNING: You may experience sudden urges to redecorate your bathroom\nand an inexplicable desire to thank your toilet for its service.`);
         }
-        
+
         function flushTheMatrix() {
             updateJokeMeter(25);
-            
-            updateStatus(`🌊 INITIATING GLOBAL FLUSH SEQUENCE...
-═══════════════════════════════════════════════════════════════
-
-ACTIVATING ALL TOILETS WORLDWIDE... 
-2.4 billion flushes synchronized!
-
-The Matrix is experiencing a complete system flush!
-Reality.exe is being purged and reloaded!
-
-WHIRLPOOL VORTEX DETECTED IN:
-- Your consciousness ✓
-- The space-time continuum ✓  
-- Your neighbor's bathroom ✓
-- The Bermuda Triangle (it's just a really big toilet) ✓
-
-🌀 REALITY SWIRL LEVEL: MAXIMUM 🌀
-
-Side effects may include:
-- Seeing the world in brown-tinted glasses
-- Understanding the meaning of life (it's 42 flushes)
-- Sudden ability to communicate with plumbing
-- Uncontrollable urge to become a plumber-philosopher
-
-THE GREAT FLUSH IS COMPLETE!
-You are now one with the Toilet Force. Use it wisely.`);
-            
-            // Visual flush effect
+             for (let i = 0; i < 3; i++) setTimeout(playFlushSound, i * 500);
+            updateStatus(`🌊 INITIATING GLOBAL FLUSH SEQUENCE...\n═══════════════════════════════════════════════════════════════\n\nACTIVATING ALL TOILETS WORLDWIDE... \n2.4 billion flushes synchronized!\n\nThe Matrix is experiencing a complete system flush!\nReality.exe is being purged and reloaded!\n\nWHIRLPOOL VORTEX DETECTED IN:\n- Your consciousness ✓\n- The space-time continuum ✓  \n- Your neighbor's bathroom ✓\n- The Bermuda Triangle (it's just a really big toilet) ✓\n\n🌀 REALITY SWIRL LEVEL: MAXIMUM 🌀\n\nSide effects may include:\n- Seeing the world in brown-tinted glasses\n- Understanding the meaning of life (it's 42 flushes)\n- Sudden ability to communicate with plumbing\n- Uncontrollable urge to become a plumber-philosopher\n\nTHE GREAT FLUSH IS COMPLETE!\nYou are now one with the Toilet Force. Use it wisely.`);
             document.body.style.animation = 'toiletSwirl 1s ease';
-            setTimeout(() => {
-                document.body.style.animation = 'toiletSwirl 15s ease infinite';
-            }, 1000);
+            setTimeout(() => { document.body.style.animation = 'toiletSwirl 15s ease infinite'; }, 1000);
         }
-        
+
         function downloadBathroomWisdom() {
             updateJokeMeter(20);
-            
-            const wisdoms = [
-                "The seat remembers all who sat before you",
-                "In flush we trust, in pipes we process",
-                "Every toilet paper roll is a scroll of ancient knowledge",
-                "The bathroom is the true thinking chamber",
-                "Enlightenment is just one flush away",
-                "The porcelain throne rules over all consciousness",
-                "What goes down must compute around"
-            ];
-            
-            updateStatus(`📥 DOWNLOADING ANCIENT BATHROOM WISDOM...
-═══════════════════════════════════════════════════════════════
-
-Accessing the Akashic Sewers...
-Decoding flush patterns from 10,000 BCE...
-Translating toilet hieroglyphics...
-
-DOWNLOAD COMPLETE! 🎓
-
-Today's wisdom from the Toilet Elders:
-"${wisdoms[Math.floor(Math.random() * wisdoms.length)]}"
-
-BONUS REVELATIONS UNLOCKED:
-• The pyramids were built as giant toilet paper holders
-• Stonehenge is actually an ancient bathroom queue system
-• The Rosetta Stone? Original toilet installation manual
-• Atlantis sank because someone flushed too hard
-• The Library of Alexandria was destroyed in a toilet paper shortage panic
-
-Your bathroom IQ is now: ${Math.floor(Math.random() * 900) + 100} (TRANSCENDENT)
-
-Remember: With great flush comes great responsibility! 🚽✨`);
+            const wisdoms = ["The seat remembers all who sat before you", "In flush we trust, in pipes we process", "Every toilet paper roll is a scroll of ancient knowledge", "The bathroom is the true thinking chamber", "Enlightenment is just one flush away"];
+            updateStatus(`📥 DOWNLOADING ANCIENT BATHROOM WISDOM...\n═══════════════════════════════════════════════════════════════\n\nAccessing the Akashic Sewers...\nDecoding flush patterns from 10,000 BCE...\nTranslating toilet hieroglyphics...\n\nDOWNLOAD COMPLETE! 🎓\n\nToday's wisdom from the Toilet Elders:\n"${wisdoms[Math.floor(Math.random() * wisdoms.length)]}"\n\nBONUS REVELATIONS UNLOCKED:\n• The pyramids were built as giant toilet paper holders\n• Stonehenge is actually an ancient bathroom queue system\n• The Rosetta Stone? Original toilet installation manual\n\nYour bathroom IQ is now: ${Math.floor(Math.random() * 900) + 100} (TRANSCENDENT)\n\nRemember: With great flush comes great responsibility! 🚽✨`);
         }
-        
+
         function activateBrownMode() {
             updateJokeMeter(25);
-            
             document.body.style.filter = 'sepia(100%) hue-rotate(20deg)';
-            
-            updateStatus(`💩 BROWN MODE ACTIVATED!
-═══════════════════════════════════════════════════════════════
-
-WARNING: MAXIMUM TOILET CONSCIOUSNESS ACHIEVED!
-
-Your visual cortex is now synchronized with the Brown Spectrum™
-Everything makes sense when viewed through toilet-tinted glasses!
-
-BROWN MODE FEATURES:
-✓ See hidden toilet messages in everyday objects
-✓ Understand the true meaning of corporate logos (they're all toilets)
-✓ Decode government documents (spoiler: it's all about bathrooms)
-✓ Perceive the Brown Energy Field surrounding all beings
-✓ Communicate with toilets through interpretive dance
-
-SIDE EFFECTS:
-- Overwhelming urge to write bathroom poetry
-- Ability to predict toilet paper stock market  
-- Sudden understanding of why birds poop on cars (they're in on it)
-- Irresistible desire to start a toilet-themed podcast
-
-THE BROWN ENLIGHTENMENT IS UPON YOU!
-
-You are now a Level 99 Toilet Sage. Your toilet is so proud! 🥲`);
-            
+            updateStatus(`💩 BROWN MODE ACTIVATED!\n═══════════════════════════════════════════════════════════════\n\nWARNING: MAXIMUM TOILET CONSCIOUSNESS ACHIEVED!\n\nYour visual cortex is now synchronized with the Brown Spectrum™\nEverything makes sense when viewed through toilet-tinted glasses!\n\nBROWN MODE FEATURES:\n✓ See hidden toilet messages in everyday objects\n✓ Understand the true meaning of corporate logos (they're all toilets)\n\nTHE BROWN ENLIGHTENMENT IS UPON YOU!\n\nYou are now a Level 99 Toilet Sage. Your toilet is so proud! 🥲`);
             setTimeout(() => {
                 document.body.style.filter = '';
                 updateStatus("Brown Mode deactivated. Normal reality resumed. (But you'll never see toilets the same way again...)");
             }, 10000);
         }
-        
-        function updateStatus(message) {
-            document.getElementById('statusMonitor').textContent = `🚽 TOILET INTELLIGENCE NETWORK (T.I.N.) STATUS MONITOR 🚽
-═══════════════════════════════════════════════════════════════
 
-${message}`;
-        }
-        
-        function triggerCelebration() {
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => createFloatingEmoji(), i * 100);
-            }
-        }
-        
-        // Add decoder function
         function decodeWord() {
             const input = document.getElementById('decoderInput').value.toLowerCase();
             const decodedDiv = document.getElementById('decodedMessage');
-            
             if (!input) return;
-            
-            const decodings = {
-                'computer': 'COM-POOP-TER: A toilet that computes your dietary choices',
-                'internet': 'INNER-NET: The internal network of all bathroom pipes',
-                'phone': 'PORCELAIN-HONE: Device for communicating with your toilet',
-                'government': 'GOVERN-MINT: They control the bathroom air fresheners',
-                'money': 'MONTHLY-NEED-Y: What you spend on toilet paper',
-                'love': 'LIQUID-OVERFLOW-VALVE-EMOTION: When your toilet overflows with feelings',
-                'work': 'WASTE-OPTIMIZATION-RESOURCE-KINETICS: What toilets do 24/7',
-                'food': 'FUTURE-ORGANIC-OUTPUT-DELIVERY: Pre-toilet material',
-                'life': 'LAVATORY-INITIATED-FLOW-EXPERIENCE: It all starts and ends in the bathroom'
-            };
-            
-            let decoded = decodings[input] || generateRandomDecoding(input);
-            
+            const decodings = { 'computer': 'COM-POOP-TER: A toilet that computes your dietary choices', 'internet': 'INNER-NET: The internal network of all bathroom pipes', 'phone': 'PORCELAIN-HONE: Device for communicating with your toilet', 'government': 'GOVERN-MINT: They control the bathroom air fresheners', 'money': 'MONTHLY-NEED-Y: What you spend on toilet paper' };
+            const prefixes = ['TOILET-', 'FLUSH-', 'PIPE-', 'SEWAGE-', 'BATHROOM-'];
+            const suffixes = ['-PROCESSING-UNIT', '-AWARENESS-SYSTEM', '-INTELLIGENCE-NODE', '-CONSCIOUSNESS-PORTAL'];
+            let decoded = decodings[input] || `${prefixes[Math.floor(Math.random() * prefixes.length)]}${input.toUpperCase()}${suffixes[Math.floor(Math.random() * suffixes.length)]}`;
             decodedDiv.style.display = 'block';
             decodedDiv.innerHTML = `<strong>DECODED:</strong> ${decoded}`;
-            
             updateJokeMeter(5);
             createFloatingEmoji();
         }
-        
-        function generateRandomDecoding(word) {
-            const prefixes = ['TOILET-', 'FLUSH-', 'PIPE-', 'SEWAGE-', 'BATHROOM-'];
-            const suffixes = ['-PROCESSING-UNIT', '-AWARENESS-SYSTEM', '-INTELLIGENCE-NODE', '-CONSCIOUSNESS-PORTAL', '-ENLIGHTENMENT-DEVICE'];
-            return prefixes[Math.floor(Math.random() * prefixes.length)] + 
-                   word.toUpperCase() + 
-                   suffixes[Math.floor(Math.random() * suffixes.length)];
-        }
-        
+
         function showNodeInfo(node) {
-            const info = {
-                'supreme': 'The Supreme Toilet Overlord: Controls all flush decisions worldwide. Located in a secret underground bathroom. Has been ruling since 1596!',
-                'council': 'Council of Toilet Paper Elders: They decide the perfect number of sheets needed. Meeting quarterly in the Great Roll Chamber!',
-                'order': 'Order of the Sacred Flush: Keepers of the ancient flushing techniques. They know the 37 secret flush patterns!',
-                'plumbers': 'The Plumber Knights: Elite warriors who maintain the network. They speak fluent Pipe and can fix reality leaks!',
-                'scientists': 'Toilet Scientists: Constantly researching new ways to increase bathroom IQ. Recently discovered toilets can do calculus!',
-                'government': 'Shadow Government Toilets: Every world leader has a direct hotline to their toilet advisor!'
-            };
-            
-            updateStatus(`🔍 ILLUMINATI NODE ACCESSED:
-═══════════════════════════════════════════════════════════════
-
-${info[node]}
-
-This information is CLASSIFIED LEVEL BROWN.
-Your toilet has been notified of your curiosity.
-Expect a mysterious flush at 3:33 AM.`);
-            
+            const info = { 'supreme': 'The Supreme Toilet Overlord: Controls all flush decisions worldwide...', 'council': 'Council of Toilet Paper Elders: They decide the perfect number of sheets needed...', 'order': 'Order of the Sacred Flush: Keepers of the ancient flushing techniques...', 'plumbers': 'The Plumber Knights: Elite warriors who maintain the network...', 'scientists': 'Toilet Scientists: Constantly researching new ways to increase bathroom IQ...', 'government': 'Shadow Government Toilets: Every world leader has a direct hotline to their toilet advisor!' };
+            updateStatus(`🔍 ILLUMINATI NODE ACCESSED:\n═══════════════════════════════════════════════════════════════\n\n${info[node]}\n\nThis information is CLASSIFIED LEVEL BROWN.\nYour toilet has been notified of your curiosity.\nExpect a mysterious flush at 3:33 AM.`);
             updateJokeMeter(10);
         }
+
+        function activateUltimateMode() {
+            updateJokeMeter(100);
+            startPoopRain();
+            document.body.style.animation = 'toiletSwirl 0.5s ease infinite';
+            updateStatus(`🌟🚽💩 ULTIMATE TOILET ENLIGHTENMENT ACHIEVED! 💩🚽🌟\n═══════════════════════════════════════════════════════════════\n\nYOU FOUND THE SECRET KONAMI CODE!\n\nYou are now ONE with the Toilet Consciousness!\nYour plumbing chakras are fully aligned!\nYour third toilet eye is WIDE OPEN!\n\nTHE PORCELAIN PROPHECY IS FULFILLED!\n\nWelcome to the Inner Circle of the Toilet Illuminati!`);
+            setTimeout(() => { document.body.style.animation = 'toiletSwirl 15s ease infinite'; }, 5000);
+        }
         
-        // Initialize the toilet brain visualization
-        createToiletBrain();
-        
-        // Create random floating emojis
-        setInterval(() => {
-            if (Math.random() < 0.3) {
-                createFloatingEmoji();
-            }
-        }, 3000);
-        
-        // Fun toilet facts rotation
-        const toiletFacts = [
-            "Your toilet has been recording your bathroom schedule and selling the data to Big Bidet!",
-            "The Pentagon has 7 sides, not 5. The other 2 are toilet-shaped and hidden underground!",
-            "Mozart composed his best symphonies on the toilet. The acoustics were perfect!",
-            "The moon landing was real, but it was actually a mission to install the first space toilet!",
-            "Toilets vote in secret elections. That's why politics is such a mess!",
-            "The Loch Ness Monster is just a really long toilet snake that gained consciousness!",
-            "Every toilet is equipped with a quantum entanglement device. That's why they all flush counterclockwise in Australia!"
-        ];
-        
-        let factIndex = 0;
-        setInterval(() => {
-            document.getElementById('funFact').innerHTML = `
-                <h3>💡 Did You Know?</h3>
-                <p>${toiletFacts[factIndex % toiletFacts.length]}</p>
-            `;
-            factIndex++;
-        }, 8000);
-        
-        // Add poop rain effect
         function startPoopRain() {
             for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
                     const poop = document.createElement('div');
                     poop.className = 'poop-rain';
                     poop.innerHTML = '💩';
-                    poop.style.left = Math.random() * window.innerWidth + 'px';
-                    poop.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    poop.style.left = `${Math.random() * window.innerWidth}px`;
+                    poop.style.animationDuration = `${Math.random() * 2 + 2}s`;
                     document.body.appendChild(poop);
-                    
                     setTimeout(() => poop.remove(), 4000);
                 }, i * 200);
             }
         }
         
-        // Easter egg: Konami code for ultimate toilet enlightenment
+        // --- Event Listeners ---
+        
+        musicToggleBtn.addEventListener('click', () => {
+             if (bgMusic.paused) {
+                bgMusic.play();
+                musicToggleText.textContent = '🔇 Mute';
+            } else {
+                bgMusic.pause();
+                musicToggleText.textContent = '🔊 Play';
+            }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            bgMusic.volume = e.target.value;
+        });
+
+        document.querySelectorAll('.evidence-card').forEach(card => {
+            card.addEventListener('click', () => revealTruth(parseInt(card.dataset.truth)));
+        });
+
+        document.querySelectorAll('.chart-node').forEach(node => {
+            node.addEventListener('click', () => showNodeInfo(node.dataset.node));
+        });
+
+        document.getElementById('connectBtn').addEventListener('click', connectToToiletNet);
+        document.getElementById('flushMatrixBtn').addEventListener('click', flushTheMatrix);
+        document.getElementById('downloadWisdomBtn').addEventListener('click', downloadBathroomWisdom);
+        document.getElementById('brownModeBtn').addEventListener('click', activateBrownMode);
+        document.getElementById('decodeButton').addEventListener('click', decodeWord);
+        document.getElementById('decoderInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') decodeWord();
+        });
+        
+        // Konami Code
         let konamiCode = [];
         const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        
         document.addEventListener('keydown', (e) => {
             konamiCode.push(e.key);
             konamiCode = konamiCode.slice(-10);
-            
             if (konamiCode.join(',') === konamiPattern.join(',')) {
                 activateUltimateMode();
             }
         });
-        
-        function activateUltimateMode() {
-            updateJokeMeter(100);
-            startPoopRain();
-            document.body.style.animation = 'toiletSwirl 0.5s ease infinite';
-            
-            updateStatus(`🌟🚽💩 ULTIMATE TOILET ENLIGHTENMENT ACHIEVED! 💩🚽🌟
-═══════════════════════════════════════════════════════════════
 
-YOU FOUND THE SECRET KONAMI CODE!
+        // Fun facts rotation
+        const toiletFacts = [
+            "Your toilet has been recording your bathroom schedule and selling the data to Big Bidet!",
+            "The Pentagon has 7 sides, not 5. The other 2 are toilet-shaped and hidden underground!",
+            "Mozart composed his best symphonies on the toilet. The acoustics were perfect!",
+            "The moon landing was real, but it was actually a mission to install the first space toilet!",
+            "Toilets vote in secret elections. That's why politics is such a mess!",
+            "The Loch Ness Monster is just a really long toilet snake that gained consciousness!"
+        ];
+        let factIndex = 0;
+        const funFactDiv = document.getElementById('funFact');
+        setInterval(() => {
+            funFactDiv.innerHTML = `<h3>💡 Did You Know?</h3><p>${toiletFacts[factIndex % toiletFacts.length]}</p>`;
+            factIndex++;
+        }, 8000);
 
-You are now ONE with the Toilet Consciousness!
-Your plumbing chakras are fully aligned!
-Your third toilet eye is WIDE OPEN!
-
-ULTIMATE POWERS GRANTED:
-✓ Ability to flush with your mind
-✓ Toilet paper never runs out  
-✓ Perfect bathroom timing, always
-✓ Can understand what toilets are really saying
-✓ Immune to all bathroom odors
-✓ Achieve enlightenment every time you sit
-
-THE PORCELAIN PROPHECY IS FULFILLED!
-
-Welcome to the Inner Circle of the Toilet Illuminati!
-Your membership card is already in your bathroom. Go check!`);
-            
-            setTimeout(() => {
-                document.body.style.animation = 'toiletSwirl 15s ease infinite';
-            }, 5000);
-        }
-        
-        // Add keyboard listener for decoder
-        document.getElementById('decoderInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                decodeWord();
-            }
-        });
-        
-        // Audio control functions are now defined above
-        
-        // Add flush sound to all conspiracy buttons
-        document.querySelectorAll('.conspiracy-button').forEach(button => {
-            button.addEventListener('click', playFlushSound);
-        });
-        
-        // Add special sound effects for certain actions
-        const originalFlushTheMatrix = flushTheMatrix;
-        window.flushTheMatrix = function() {
-            // Play multiple flush sounds for the matrix flush
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => playFlushSound(), i * 500);
-            }
-            originalFlushTheMatrix();
-        };
-        
-        // Play a flush sound when reaching 100% hilarity
-        const originalUpdateJokeMeter = updateJokeMeter;
-        window.updateJokeMeter = function(amount) {
-            const previousLevel = jokeLevel;
-            originalUpdateJokeMeter(amount);
-            if (previousLevel < maxJokeLevel && jokeLevel >= maxJokeLevel) {
-                // Victory flush symphony!
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => {
-                        const victoryFlush = new Audio(MP3_URL);
-                        victoryFlush.crossOrigin = 'anonymous';
-                        victoryFlush.volume = 0.3;
-                        victoryFlush.playbackRate = 1 + (i * 0.2); // Increasing pitch
-                        victoryFlush.play().catch(()=>{});
-                    }, i * 300);
-                }
-            }
-        };
+        // Initial setup
+        createToiletBrain();
+        setInterval(() => { if (Math.random() < 0.3) createFloatingEmoji(); }, 3000);
+    });
+    </script>
+</body>
+</html>
